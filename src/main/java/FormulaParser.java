@@ -56,7 +56,7 @@ public class FormulaParser {
 
         int deep = maxDeep;
         while (deep != -1) {
-            //Перебераем все элементы на 1 глубине и сначала считаем знаки * и /, а потом + и -
+            //Перебираем все элементы на 1 глубине и сначала считаем знаки * и /, а потом + и -
             for (int iterator = 0; iterator < actionsList.size(); iterator++) {
                 Action action = actionsList.get(iterator);
                 if (action.getDeepLvl() == deep) {
