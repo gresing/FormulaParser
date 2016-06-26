@@ -73,7 +73,7 @@ public class FormulaParser {
                         replaceNumbersAndRemoveAction(iterator, action, tr);
                         iterator = -1;
                     } else if (action.getMarkInString().equals("/")) {
-                        double tr = action.getN1().getValue() / action.getN2().getValue(); // проверка деления на 0
+                        double tr = action.getN1().getValue() / action.getN2().getValue();
                         replaceNumbersAndRemoveAction(iterator, action, tr);
                         iterator = -1;
                     }
