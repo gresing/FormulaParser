@@ -7,10 +7,8 @@ import java.util.ArrayList;
  */
 public class FormulaParser {
     private char[] numeric = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
-    private char[] marks = {'/', '*', '+', '-'};
     private char[] formulaChars;
     private ArrayList<Action> actionsList = new ArrayList<>();
-    private int deepLvl = 0;
     private int maxDeep = 0;
 
     public FormulaParser(String inputString) {
@@ -18,6 +16,7 @@ public class FormulaParser {
         Double firstN = getRightOperandFromPosition(0);
         Number prevN = new Number(firstN);
 
+        int deepLvl = 0;
         for (int i = 0; i < formulaChars.length; i++) {
             if (String.valueOf(formulaChars[i]).equals("(")) {
                 deepLvl = deepLvl + 1;
@@ -27,9 +26,10 @@ public class FormulaParser {
                 deepLvl = deepLvl - 1;
             }
 
-            for (int y = 0; y < marks.length; y++) {
+            char[] marks = {'/', '*', '+', '-'};
+            for (char mark : marks) {
 
-                if (formulaChars[i] == marks[y]) {
+                if (formulaChars[i] == mark) {
                     //Нашли арифмитический знак
                     //Левый опперанд уже есть, получаем правый и делаем инстанс "действия"
                     //циферные операнды - слева prevN, справа - nextN
